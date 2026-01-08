@@ -14,14 +14,10 @@ export default function AppLayout({
       <AppSidebar />
       <SidebarInset>
         <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:hidden">
-          <div className="flex items-center gap-4">
-            <SidebarTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8">
-                <PanelLeft />
-              </Button>
-            </SidebarTrigger>
-            <h1 className="text-lg font-bold text-primary">AMATRIX</h1>
-          </div>
+          <SidebarTrigger>
+              <PanelLeft />
+          </SidebarTrigger>
+          <h1 className="text-lg font-bold text-primary">AMATRIX</h1>
         </header>
         {children}
       </SidebarInset>
