@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake } from 'lucide-react';
 import { IntelligentSearch } from '@/components/features/intelligent-search';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -17,42 +17,78 @@ import Link from 'next/link';
 const featuredServices = [
   {
     id: 'digital',
-    title: 'Ecosistema Digital',
-    description: 'Consultoría, diseño, marketing, y desarrollo web a tu alcance.',
+    title: 'Ecosistema Digital 360°',
+    description: 'Desde consultoría y diseño hasta marketing y desarrollo web. Tu presencia digital, reinventada.',
     image: PlaceHolderImages.find((img) => img.id === 'service-digital'),
   },
   {
     id: 'wellness',
-    title: 'Bienestar & Educación',
-    description: 'Clases, tutorías, coaching, psicología, nutrición y más.',
+    title: 'Bienestar y Educación de Élite',
+    description: 'Coaching, psicología, nutrición y más. Invierte en ti con los mejores expertos.',
     image: PlaceHolderImages.find((img) => img.id === 'service-wellness'),
   },
   {
     id: 'entertainment',
-    title: 'Entertainment Hub',
-    description: 'Shows, DJs, baile y streaming en vivo para tus eventos.',
+    title: 'Entertainment Hub Premium',
+    description: 'Shows, DJs, y producción de eventos en vivo. Crea experiencias inolvidables.',
     image: PlaceHolderImages.find((img) => img.id === 'service-entertainment'),
+  },
+  {
+    id: 'home-services',
+    title: 'Servicios Físicos Confiables',
+    description: 'Técnicos, reparaciones y logística con la máxima eficiencia y garantía de calidad.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-home'),
+  },
+  {
+    id: 'legal-financial',
+    title: 'Asesoría Legal y Financiera',
+    description: 'Expertos listos para blindar tus decisiones y optimizar tus recursos.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-legal'),
+  },
+  {
+    id: 'creative-design',
+    title: 'Estudio Creativo y Diseño',
+    description: 'Branding, diseño gráfico y creación de contenido que deja huella.',
+    image: PlaceHolderImages.find((img) => img.id === 'service-creative'),
   },
 ];
 
 const topProfessionals = [
   {
     name: 'Neo Anderson',
-    specialty: 'Web Developer',
+    specialty: 'Arquitecto de Realidades Digitales',
     rating: 5,
     avatar: PlaceHolderImages.find((img) => img.id === 'avatar-1'),
   },
   {
     name: 'Trinity',
-    specialty: 'Cybersecurity Expert',
+    specialty: 'Guardián de Ciberseguridad',
     rating: 5,
     avatar: PlaceHolderImages.find((img) => img.id === 'avatar-2'),
   },
   {
     name: 'Morpheus',
-    specialty: 'Life Coach',
+    specialty: 'Mentor de Potencial Humano',
     rating: 4.9,
     avatar: PlaceHolderImages.find((img) => img.id === 'avatar-3'),
+  },
+   {
+    name: 'Oráculo',
+    specialty: 'Estratega de Negocios Predictiva',
+    rating: 5,
+    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-4'),
+  },
+  {
+    name: 'Seraph',
+    specialty: 'Protector de Activos Digitales',
+    rating: 4.9,
+    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-5'),
+  },
+   {
+    name: 'Niobe',
+    specialty: 'Líder de Operaciones Logísticas',
+    rating: 4.8,
+    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-6'),
   },
 ];
 
@@ -61,7 +97,7 @@ export default function Home() {
 
   return (
     <main className="flex-1 overflow-auto">
-      <div className="relative h-[60vh] min-h-[500px] flex items-center justify-center text-center p-4">
+      <div className="relative h-[70vh] min-h-[600px] flex items-center justify-center text-center p-4">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -72,31 +108,63 @@ export default function Home() {
             priority
           />
         )}
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/75" />
         <div className="relative z-10 flex flex-col items-center gap-6 text-white">
-          <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tighter">
-            Bienvenido al Nexus
+          <h1 className="text-5xl md:text-7xl font-bold text-primary tracking-tighter">
+            La Plataforma Definitiva para Servicios de Élite
           </h1>
-          <p className="max-w-2xl text-lg md:text-xl text-foreground/80">
-            Tu portal a servicios de élite. Conecta con profesionales verificados para soluciones presenciales y virtuales.
+          <p className="max-w-3xl text-lg md:text-xl text-foreground/80">
+            Accede a una red exclusiva de profesionales verificados y lleva tus proyectos al siguiente nivel. Rápido, seguro y eficiente.
           </p>
           <IntelligentSearch />
         </div>
       </div>
 
-      <div className="p-4 md:p-8 space-y-12">
+       <section className="bg-background py-12 md:py-20">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-primary">¿Por Qué Elegir Amatrix?</h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">No somos solo un directorio. Somos tu socio estratégico para el éxito.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-primary/10 rounded-full mb-4">
+                <ShieldCheck className="w-10 h-10 text-primary"/>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Verificación de Élite</h3>
+              <p className="text-muted-foreground">Cada profesional pasa por un riguroso proceso de validación. Solo los mejores llegan aquí.</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-primary/10 rounded-full mb-4">
+                <Zap className="w-10 h-10 text-primary"/>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Conexión Instantánea</h3>
+              <p className="text-muted-foreground">Nuestra IA te conecta con el experto ideal en segundos. Di adiós a la búsqueda interminable.</p>
+            </div>
+             <div className="flex flex-col items-center">
+               <div className="p-4 bg-primary/10 rounded-full mb-4">
+                <HeartHandshake className="w-10 h-10 text-primary"/>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Soporte y Garantía</h3>
+              <p className="text-muted-foreground">Tu satisfacción es nuestra prioridad. Ofrecemos soporte 24/7 y garantía en cada servicio.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="p-4 md:p-8 space-y-16">
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-center text-primary">Servicios Destacados</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-primary">Un Universo de Soluciones a tu Alcance</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {featuredServices.map((service) => (
-              <Card key={service.id} className="bg-card border-border hover:border-primary/50 transition-colors duration-300 flex flex-col">
+              <Card key={service.id} className="bg-card border-border hover:border-primary/50 transition-colors duration-300 flex flex-col group">
                 {service.image && (
-                  <div className="relative h-48 w-full">
+                  <div className="relative h-56 w-full overflow-hidden">
                     <Image
                       src={service.image.imageUrl}
                       alt={service.image.description}
                       fill
-                      className="object-cover rounded-t-lg"
+                      className="object-cover rounded-t-lg transition-transform duration-500 group-hover:scale-110"
                       data-ai-hint={service.image.imageHint}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
@@ -109,7 +177,7 @@ export default function Home() {
                 <CardContent className="flex-grow flex items-end">
                    <Link href="/services" passHref className="w-full">
                     <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                      Explorar Categoría
+                      Descubrir Más <ArrowRight className="ml-2"/>
                     </Button>
                   </Link>
                 </CardContent>
@@ -119,36 +187,37 @@ export default function Home() {
         </section>
 
         <section>
-          <h2 className="text-3xl font-bold mb-6 text-center text-primary">Profesionales de Élite</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center text-primary">Conoce a la Fuerza de Élite</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {topProfessionals.map((prof) => (
-              <Card key={prof.name} className="bg-card border-border hover:border-primary/50 transition-colors duration-300">
-                <CardContent className="p-6 flex items-center gap-4">
+              <Card key={prof.name} className="bg-card border-border hover:border-primary/50 transition-colors duration-300 overflow-hidden group">
+                <CardContent className="p-6 flex flex-col items-center text-center">
                   {prof.avatar && (
-                    <Avatar className="h-20 w-20 border-2 border-accent">
+                    <Avatar className="h-24 w-24 border-4 border-accent mb-4">
                       <AvatarImage src={prof.avatar.imageUrl} alt={prof.name} data-ai-hint={prof.avatar.imageHint} />
                       <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                   )}
                   <div className="space-y-1">
                     <CardTitle className="text-lg">{prof.name}</CardTitle>
-                    <p className="text-sm text-primary">{prof.specialty}</p>
-                    <div className="flex items-center gap-1">
+                    <p className="text-sm text-primary font-medium">{prof.specialty}</p>
+                    <div className="flex items-center justify-center gap-1 pt-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                       <span className="text-sm font-bold">{prof.rating}</span>
+                      <span className="text-xs text-muted-foreground ml-1">(+500 servicios)</span>
                     </div>
                   </div>
-                  <Button variant="ghost" size="icon" className="ml-auto text-muted-foreground hover:text-primary">
-                    <ArrowRight />
+                   <Button variant="ghost" className="mt-4 w-full text-primary hover:text-primary">
+                    Ver Perfil <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
                   </Button>
                 </CardContent>
               </Card>
             ))}
           </div>
-           <div className="text-center mt-8">
+           <div className="text-center mt-12">
             <Link href="/professionals" passHref>
-              <Button variant="default" size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                Ver Todos los Profesionales <ArrowRight className="ml-2"/>
+              <Button variant="default" size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6">
+                Explora el Directorio Completo <ArrowRight className="ml-2"/>
               </Button>
             </Link>
           </div>

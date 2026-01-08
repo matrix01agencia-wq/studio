@@ -25,6 +25,24 @@
       "imageHint": "man profile"
     },
     {
+      "id": "avatar-4",
+      "description": "Professional avatar 4",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzkxMzA2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "avatar-5",
+      "description": "Professional avatar 5",
+      "imageUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBzbWlsaW5nfGVufDB8fHx8MTc2NzkxMzA5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man smiling"
+    },
+    {
+      "id": "avatar-6",
+      "description": "Professional avatar 6",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b21hbiUyMHByb2ZpbGV8ZW58MHx8fHwxNzY3OTEzMTIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman profile"
+    },
+    {
       "id": "service-digital",
       "description": "Digital services example",
       "imageUrl": "https://images.unsplash.com/photo-1567641091594-71640a68f847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb2RlJTIwc2NyZWVufGVufDB8fHx8MTc2Nzg4MzIwNnww&ixlib=rb-4.1.0&q=80&w=1080",
@@ -41,6 +59,24 @@
       "description": "Entertainment service example",
       "imageUrl": "https://images.unsplash.com/photo-1649794508359-4a12023aed8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkaiUyMGNvbmNlcnR8ZW58MHx8fHwxNzY3OTEwOTc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dj concert"
+    },
+    {
+      "id": "service-home",
+      "description": "Home services example",
+      "imageUrl": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob21lfGVufDB8fHx8MTc2NzkxMzY3NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern home"
+    },
+    {
+      "id": "service-legal",
+      "description": "Legal and financial services",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-169544351742?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWdhbCUyMGRvY3VtZW50c3xlbnwwfHx8fDE3Njc5MTM3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "legal documents"
+    },
+    {
+      "id": "service-creative",
+      "description": "Creative and design studio",
+      "imageUrl": "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHdvcmtzcGFjZXxlbnwwfHx8fDE3Njc5MTM3NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creative workspace"
     },
     {
       "id": "academy-banner",
