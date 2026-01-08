@@ -45,8 +45,8 @@ export default function AcademyPage() {
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
                 <h2 className="text-4xl font-bold text-accent-foreground mb-4">Tu Futuro Comienza Aquí</h2>
                 <p className="text-xl text-accent-foreground/80 max-w-2xl mb-6">Nuestra plataforma educativa está en desarrollo para traerte contenido de vanguardia. Prepárate para una experiencia de aprendizaje sin igual.</p>
-                 <Link href="#coming-soon">
-                    <Button size="lg" variant="secondary">Explorar Próximos Cursos</Button>
+                 <Link href="/support">
+                    <Button size="lg" variant="secondary">Contactar para más información</Button>
                 </Link>
             </div>
         </div>

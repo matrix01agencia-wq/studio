@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Grid3x3, Briefcase, HeartPulse, Building, Mic2, Palette } from "lucide-react";
+import { Grid3x3, Briefcase, HeartPulse, Building, Mic2, Palette, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -52,7 +52,7 @@ export default function ServicesPage() {
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {serviceCategories.map((category) => (
-            <Card key={category.name} className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col">
+            <Card key={category.name} className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 flex flex-col group">
                 <CardHeader>
                     <div className="flex items-center gap-4 mb-2">
                         <category.icon className="w-10 h-10 text-primary"/>
@@ -67,8 +67,10 @@ export default function ServicesPage() {
                             {category.examples.map(ex => <div key={ex} className="text-xs bg-accent/30 text-accent-foreground/80 px-2 py-1 rounded">{ex}</div>)}
                         </div>
                     </div>
-                    <Link href="#" passHref>
-                        <Button className="w-full" variant="outline">Explorar Categoría</Button>
+                    <Link href="/professionals" passHref className="w-full">
+                        <Button className="w-full" variant="outline">
+                            Explorar Profesionales <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
                     </Link>
                 </CardContent>
             </Card>

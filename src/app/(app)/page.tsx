@@ -207,9 +207,11 @@ export default function Home() {
                       <span className="text-xs text-muted-foreground ml-1">(+500 servicios)</span>
                     </div>
                   </div>
-                   <Button variant="ghost" className="mt-4 w-full text-primary hover:text-primary">
-                    Ver Perfil <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
-                  </Button>
+                   <Link href="/profile" passHref className="w-full">
+                      <Button variant="ghost" className="mt-4 w-full text-primary hover:text-primary">
+                        Ver Perfil <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
+                      </Button>
+                    </Link>
                 </CardContent>
               </Card>
             ))}

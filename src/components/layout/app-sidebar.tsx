@@ -20,18 +20,20 @@ import {
   User,
   PanelLeft,
   Settings,
+  CalendarDays,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 
 const navItems = [
-  { href: '/', icon: LayoutDashboard, label: 'Inicio', tooltip: 'Inicio (Nexus)' },
-  { href: '/services', icon: Grid3x3, label: 'Servicios', tooltip: 'Matrix Catalog' },
-  { href: '/professionals', icon: Users, label: 'Profesionales', tooltip: 'Elite Force' },
+  { href: '/', icon: LayoutDashboard, label: 'Inicio', tooltip: 'Nexus' },
+  { href: '/services', icon: Grid3x3, label: 'Servicios', tooltip: 'Matrix de Servicios' },
+  { href: '/professionals', icon: Users, label: 'Profesionales', tooltip: 'Fuerza de Élite' },
+  { href: '/agenda', icon: CalendarDays, label: 'Agenda', tooltip: 'Mi Agenda' },
   { href: '/academy', icon: BookOpen, label: 'Academia', tooltip: 'Amatrix Learn' },
-  { href: '/support', icon: MessageSquare, label: 'Contacto', tooltip: 'Support Protocol' },
   { href: '/tracking', icon: Map, label: 'Seguimiento', tooltip: 'Live Tracker' },
+  { href: '/support', icon: MessageSquare, label: 'Contacto', tooltip: 'Protocolo de Soporte' },
 ];
 
 const AmatrixLogo = () => (
