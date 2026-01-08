@@ -15,7 +15,7 @@ export default function AppLayout({
       <SidebarInset>
         <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:hidden">
           <SidebarTrigger>
-              <PanelLeft />
+            <PanelLeft />
           </SidebarTrigger>
           <h1 className="text-lg font-bold text-primary">AMATRIX</h1>
         </header>

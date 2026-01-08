@@ -13,7 +13,7 @@ export default function ProfilePage() {
             <CardHeader className="relative">
                 <div className="flex flex-col md:flex-row items-center gap-6">
                     <Avatar className="h-28 w-28 border-4 border-primary">
-                        <AvatarImage src="https://picsum.photos/seed/user-avatar/200/200" data-ai-hint="person avatar" alt="User" />
+                        <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdmF0YXJ8ZW58MHx8fHwxNzE3MjE0MjU3fDA&ixlib=rb-4.1.0&q=80&w=1080" data-ai-hint="person avatar" alt="User" />
                         <AvatarFallback>U</AvatarFallback>
                     </Avatar>
                     <div className="text-center md:text-left">

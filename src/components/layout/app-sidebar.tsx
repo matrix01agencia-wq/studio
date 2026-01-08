@@ -61,10 +61,8 @@ export function AppSidebar() {
         <div className="flex items-center justify-between">
             <AmatrixLogo />
             <div className="group-data-[collapsible=icon]:hidden">
-                <SidebarTrigger asChild>
-                    <Button variant="ghost" size="icon" className='h-8 w-8 text-foreground/70 hover:text-foreground'>
-                        <PanelLeft />
-                    </Button>
+                <SidebarTrigger>
+                    <PanelLeft />
                 </SidebarTrigger>
             </div>
         </div>
@@ -99,7 +97,7 @@ export function AppSidebar() {
               >
                 <div className='flex items-center gap-2'>
                     <Avatar className="h-7 w-7">
-                        <AvatarImage src="https://picsum.photos/seed/user-avatar/100/100" data-ai-hint="person avatar" alt="User" />
+                        <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdmF0YXJ8ZW58MHx8fHwxNzE3MjE0MjU3fDA&ixlib=rb-4.1.0&q=80&w=1080" data-ai-hint="person avatar" alt="User" />
                         <AvatarFallback>U</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col text-left group-data-[collapsible=icon]:hidden">
