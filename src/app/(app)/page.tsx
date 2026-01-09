@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake, User, Briefcase } from 'lucide-react';
+import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake, User, Briefcase, LogIn } from 'lucide-react';
 import { IntelligentSearch } from '@/components/features/intelligent-search';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -106,6 +106,7 @@ export default function Home() {
             className="object-cover"
             data-ai-hint={heroImage.imageHint}
             priority
+            unoptimized
           />
         )}
         <div className="absolute inset-0 bg-black/75" />
@@ -129,6 +130,13 @@ export default function Home() {
               </Button>
             </Link>
           </div>
+           <div className="mt-6">
+              <Link href="/login">
+                <Button variant="ghost" className="text-lg text-white/80 hover:text-white hover:bg-white/10">
+                    <LogIn className="mr-2" /> ¿Ya tienes una cuenta? Inicia Sesión
+                </Button>
+              </Link>
+            </div>
         </div>
       </div>
 
@@ -179,6 +187,7 @@ export default function Home() {
                       className="object-cover rounded-t-lg transition-transform duration-500 group-hover:scale-110"
                       data-ai-hint={service.image.imageHint}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      unoptimized
                     />
                   </div>
                 )}

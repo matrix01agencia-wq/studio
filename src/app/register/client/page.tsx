@@ -38,7 +38,7 @@ export default function RegisterClientPage() {
           </form>
           <div className="mt-6 text-center text-sm">
             ¿Ya tienes una cuenta?{" "}
-            <Link href="/" className="font-medium text-primary hover:underline">
+            <Link href="/login" className="font-medium text-primary hover:underline">
               Inicia Sesión
             </Link>
           </div>
