@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Search } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
@@ -29,7 +30,7 @@ function SubmitButton() {
 
 export function IntelligentSearch() {
     const initialState: SearchState = {};
-    const [state, dispatch] = useFormState(searchServices, initialState);
+    const [state, dispatch] = useActionState(searchServices, initialState);
 
     return (
         <div className="w-full max-w-2xl mx-auto">
