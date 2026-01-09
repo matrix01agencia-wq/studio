@@ -21,10 +21,10 @@ import {
   PanelLeft,
   Settings,
   CalendarDays,
+  Wallet,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 
 const navItems = [
   { href: '/', icon: LayoutDashboard, label: 'Inicio', tooltip: 'Nexus' },
@@ -33,7 +33,8 @@ const navItems = [
   { href: '/agenda', icon: CalendarDays, label: 'Agenda', tooltip: 'Mi Agenda' },
   { href: '/academy', icon: BookOpen, label: 'Academia', tooltip: 'Amatrix Learn' },
   { href: '/tracking', icon: Map, label: 'Seguimiento', tooltip: 'Live Tracker' },
-  { href: '/support', icon: MessageSquare, label: 'Contacto', tooltip: 'Protocolo de Soporte' },
+  { href: '/billing', icon: Wallet, label: 'Facturación', tooltip: 'Centro Financiero' },
+  { href: '/support', icon: MessageSquare, label: 'Soporte', tooltip: 'Protocolo de Soporte' },
 ];
 
 const AmatrixLogo = () => (
@@ -59,7 +60,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader>
+       <SidebarHeader>
         <div className="flex items-center justify-between">
             <AmatrixLogo />
             <div className="group-data-[collapsible=icon]:hidden">
