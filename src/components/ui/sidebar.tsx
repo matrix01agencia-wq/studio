@@ -206,8 +206,8 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
-            <SheetHeader className="p-2">
-                <SheetTitle className="text-lg font-bold text-primary">AMATRIX</SheetTitle>
+            <SheetHeader>
+                <SheetTitle className="hidden">AMATRIX</SheetTitle>
             </SheetHeader>
             {children}
           </SheetContent>
