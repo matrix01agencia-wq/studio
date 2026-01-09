@@ -75,9 +75,11 @@ export default function AgendaPage() {
                                     </div>
                                 </div>
                             </div>
-                            <Button variant="ghost" size="icon" className="hidden sm:flex">
-                                <Plus className="w-5 h-5 -rotate-45" />
-                            </Button>
+                            <Link href="/support">
+                                <Button variant="ghost" size="icon" className="hidden sm:flex">
+                                    <Plus className="w-5 h-5 -rotate-45" />
+                                </Button>
+                            </Link>
                         </div>
                     ))}
                 </CardContent>

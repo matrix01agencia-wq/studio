@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const activeServices = [
     {
@@ -67,7 +68,9 @@ export default function TrackingPage() {
                                 <span>{service.progress}% completado</span>
                             </div>
                         </div>
-                        <Button className="w-full mt-6">Ver Detalles del Servicio</Button>
+                        <Link href="/tracking">
+                            <Button className="w-full mt-6">Ver Detalles del Servicio</Button>
+                        </Link>
                     </CardContent>
                 </Card>
             ))}
@@ -86,7 +89,7 @@ export default function TrackingPage() {
                                 <p className="text-sm text-muted-foreground">Completado el 15/06/2024</p>
                             </div>
                         </div>
-                        <Button variant="ghost" size="sm">Ver Factura</Button>
+                        <Link href="/billing"><Button variant="ghost" size="sm">Ver Factura</Button></Link>
                      </div>
                       <div className="flex items-center justify-between p-3 bg-background rounded-lg border">
                         <div className="flex items-center gap-3">
@@ -96,7 +99,7 @@ export default function TrackingPage() {
                                 <p className="text-sm text-muted-foreground">Cancelado el 10/06/2024</p>
                             </div>
                         </div>
-                        <Button variant="ghost" size="sm">Detalles</Button>
+                        <Link href="/support"><Button variant="ghost" size="sm">Detalles</Button></Link>
                      </div>
                  </div>
              </CardContent>

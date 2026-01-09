@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LifeBuoy, MessageSquare, Ticket, BookOpen, ShieldQuestion } from "lucide-react";
+import Link from "next/link";
 
 export default function SupportPage() {
   return (
@@ -20,7 +21,7 @@ export default function SupportPage() {
             </CardHeader>
             <CardContent>
                 <CardDescription>Encuentra respuestas instantáneas, guías y tutoriales en nuestro completo centro de ayuda.</CardDescription>
-                 <Button variant="link" className="px-0 mt-2">Explorar artículos &rarr;</Button>
+                 <Link href="/support"><Button variant="link" className="px-0 mt-2">Explorar artículos &rarr;</Button></Link>
             </CardContent>
         </Card>
         <Card className="bg-card border-border hover:border-primary/50 transition-colors cursor-pointer hover:shadow-lg">
@@ -30,7 +31,7 @@ export default function SupportPage() {
             </CardHeader>
             <CardContent>
                 <CardDescription>Chatea con un especialista de Amatrix en tiempo real. Soluciones rápidas, a cualquier hora.</CardDescription>
-                 <Button variant="link" className="px-0 mt-2">Iniciar Chat (Próximamente)</Button>
+                 <Link href="/support"><Button variant="link" className="px-0 mt-2">Iniciar Chat (Próximamente)</Button></Link>
             </CardContent>
         </Card>
         <Card className="bg-card border-border hover:border-primary/50 transition-colors cursor-pointer hover:shadow-lg">
@@ -40,7 +41,7 @@ export default function SupportPage() {
             </CardHeader>
             <CardContent>
                 <CardDescription>Para consultas complejas, crea un ticket y sigue su progreso hasta la resolución.</CardDescription>
-                <Button variant="link" className="px-0 mt-2">Crear un Ticket &rarr;</Button>
+                <Link href="/support"><Button variant="link" className="px-0 mt-2">Crear un Ticket &rarr;</Button></Link>
             </CardContent>
         </Card>
       </div>

@@ -127,7 +127,9 @@ export default function BillingPage() {
                                 <p className="font-bold text-lg text-primary">Plan Élite</p>
                                 <p className="text-sm text-muted-foreground">Se renueva el 27/08/2024</p>
                             </div>
-                            <Button variant="destructive">Cancelar</Button>
+                            <Link href="/support">
+                                <Button variant="destructive">Cancelar</Button>
+                            </Link>
                          </div>
                          <p className="text-center text-muted-foreground text-sm p-4">No tienes otras suscripciones. <Link href="/services" className="text-primary hover:underline">Explora nuestros planes</Link> para desbloquear todo el potencial de Amatrix.</p>
                     </CardContent>

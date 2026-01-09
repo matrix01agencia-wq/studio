@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Edit, ShieldCheck, Wallet, History, LogOut, Star, MessageSquare, Settings } from "lucide-react";
+import Link from "next/link";
 
 
 export default function ProfilePage() {
@@ -31,9 +32,11 @@ export default function ProfilePage() {
                         </div>
                     </div>
                 </div>
-                <Button variant="outline" size="icon" className="absolute top-20 right-4">
-                    <Edit className="h-4 w-4" />
-                </Button>
+                <Link href="/profile">
+                    <Button variant="outline" size="icon" className="absolute top-20 right-4">
+                        <Edit className="h-4 w-4" />
+                    </Button>
+                </Link>
             </CardHeader>
             <CardContent>
                 <Separator className="my-6" />
@@ -53,10 +56,10 @@ export default function ProfilePage() {
                 </div>
                  <Separator className="my-6" />
                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><Wallet/> Mi Billetera</Button>
-                    <Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><History/> Historial de Proyectos</Button>
-                     <Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><MessageSquare/> Mis Mensajes</Button>
-                    <Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><Settings/> Configuración</Button>
+                    <Link href="/billing"><Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><Wallet/> Mi Billetera</Button></Link>
+                    <Link href="/tracking"><Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><History/> Historial de Proyectos</Button></Link>
+                     <Link href="/support"><Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><MessageSquare/> Mis Mensajes</Button></Link>
+                    <Link href="/profile"><Button variant="outline" className="justify-start h-12 text-base gap-3 hover:bg-accent/50 hover:text-foreground"><Settings/> Configuración</Button></Link>
                  </div>
             </CardContent>
         </Card>
@@ -98,9 +101,9 @@ export default function ProfilePage() {
                     <CardTitle>Acciones Rápidas</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-3">
-                    <Button variant="outline" className="justify-start text-base"><Edit className="mr-2"/> Editar Perfil Público</Button>
-                    <Button variant="outline" className="justify-start text-base"><ShieldCheck className="mr-2"/> Seguridad de la Cuenta</Button>
-                    <Button variant="destructive" className="justify-start text-base mt-6"><LogOut className="mr-2"/> Cerrar Sesión</Button>
+                    <Link href="/profile"><Button variant="outline" className="justify-start text-base"><Edit className="mr-2"/> Editar Perfil Público</Button></Link>
+                    <Link href="/profile"><Button variant="outline" className="justify-start text-base"><ShieldCheck className="mr-2"/> Seguridad de la Cuenta</Button></Link>
+                    <Link href="/"><Button variant="destructive" className="justify-start text-base mt-6"><LogOut className="mr-2"/> Cerrar Sesión</Button></Link>
                 </CardContent>
             </Card>
         </div>
