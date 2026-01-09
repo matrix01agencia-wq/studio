@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake, User, Briefcase } from 'lucide-react';
 import { IntelligentSearch } from '@/components/features/intelligent-search';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -97,7 +97,7 @@ export default function Home() {
 
   return (
     <main className="flex-1 overflow-auto">
-      <div className="relative h-[70vh] min-h-[600px] flex items-center justify-center text-center p-4">
+      <div className="relative h-[80vh] min-h-[700px] flex items-center justify-center text-center p-4">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -117,6 +117,18 @@ export default function Home() {
             Accede a una red exclusiva de profesionales verificados y lleva tus proyectos al siguiente nivel. Rápido, seguro y eficiente.
           </p>
           <IntelligentSearch />
+           <div className="mt-4 flex flex-col sm:flex-row gap-4">
+            <Link href="/register/client" passHref>
+              <Button size="lg" variant="default" className="text-lg px-8 py-6 w-full sm:w-auto">
+                <User className="mr-2" /> Registrarme como Cliente
+              </Button>
+            </Link>
+            <Link href="/register/professional" passHref>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
+                <Briefcase className="mr-2" /> Registrarme como Profesional
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
