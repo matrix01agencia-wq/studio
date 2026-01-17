@@ -1,0 +1,16 @@
+{
+  "name": "Agency Amatrix",
+  "short_name": "Amatrix",
+  "description": "Plataforma híbrida de servicios de élite.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ff44",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
