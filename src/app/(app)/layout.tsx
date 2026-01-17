@@ -1,10 +1,8 @@
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/app-sidebar';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { Button } from '@/components/ui/button';
 import { PanelLeft } from 'lucide-react';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
-import { initializeFirebase } from '@/firebase';
 import { FirebaseErrorListener } from '@/components/FirebaseErrorListener';
 
 export default function AppLayout({
@@ -12,9 +10,8 @@ export default function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const firebaseApp = initializeFirebase();
   return (
-    <FirebaseClientProvider firebaseApp={firebaseApp}>
+    <FirebaseClientProvider>
       <FirebaseErrorListener />
       <SidebarProvider>
         <AppSidebar />
