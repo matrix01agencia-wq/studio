@@ -1,42 +1,66 @@
+'use client';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Edit, ShieldCheck, Wallet, History, LogOut, Star, MessageSquare, Settings } from "lucide-react";
+import { ShieldCheck, Wallet, History, LogOut, Star, MessageSquare, Settings } from "lucide-react";
 import Link from "next/link";
-
+import { useUser } from "@/firebase/auth/use-user";
+import { signOutUser } from "@/firebase/auth/actions";
+import { useRouter } from "next/navigation";
+import { EditProfileDialog } from "@/components/features/edit-profile-dialog";
 
 export default function ProfilePage() {
+    const { user, profile, loading } = useUser();
+    const router = useRouter();
+
+    const handleSignOut = async () => {
+        await signOutUser();
+        router.push('/');
+    };
+
+    if (loading) {
+        return <div className="container mx-auto p-4 md:p-8">Cargando perfil...</div>
+    }
+    
+    if (!user || !profile) {
+        // This should be handled by middleware in a real app, redirecting to login.
+        // For now, we'll just show a message.
+        if (typeof window !== 'undefined') {
+            router.push('/login');
+        }
+        return null;
+    }
+
+
   return (
     <div className="container mx-auto p-4 md:p-8 space-y-8">
         <Card className="bg-card border-border overflow-hidden">
             <div className="relative h-40 bg-accent/30">
-                 <img src="https://images.unsplash.com/photo-1512364615838-8088a04a778b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmdXR1cmlzdGljJTIwY2l0eXxlbnwwfHx8fDE3Njc4Njk2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Banner de perfil" className="object-cover w-full h-full opacity-30"/>
+                 <img src={profile.bannerUrl || "https://images.unsplash.com/photo-1512364615838-8088a04a778b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmdXR1cmlzdGljJTIwY2l0eXxlbnwwfHx8fDE3Njc4Njk2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080"} alt="Banner de perfil" className="object-cover w-full h-full opacity-30"/>
             </div>
             <CardHeader className="relative -mt-16 z-10">
                 <div className="flex flex-col items-center text-center">
                     <Avatar className="h-32 w-32 border-4 border-primary shadow-lg">
-                        <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdmF0YXJ8ZW58MHx8fHwxNzE3MjE0MjU3fDA&ixlib=rb-4.1.0&q=80&w=1080" data-ai-hint="person avatar" alt="User" />
-                        <AvatarFallback>U</AvatarFallback>
+                        <AvatarImage src={profile.avatarUrl} data-ai-hint="person avatar" alt={profile.name || "User"} />
+                        <AvatarFallback>{profile.name?.charAt(0).toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <div className="mt-4">
                         <div className="flex items-center gap-2 justify-center">
-                           <h1 className="text-3xl font-bold">Usuario de Élite</h1>
+                           <h1 className="text-3xl font-bold">{profile.name}</h1>
                            <ShieldCheck className="w-7 h-7 text-primary" />
                         </div>
-                        <p className="text-muted-foreground">usuario@amatrix.com</p>
+                        <p className="text-muted-foreground">{user.email}</p>
                         <div className="mt-3 flex gap-2 justify-center">
-                            <Badge variant="secondary" className="text-sm">Cliente Verificado</Badge>
-                            <Badge variant="outline" className="text-sm">Miembro desde 2024</Badge>
+                            <Badge variant="secondary" className="text-sm capitalize">{profile.role}</Badge>
+                            <Badge variant="outline" className="text-sm">Miembro desde {new Date(user.metadata.creationTime!).getFullYear()}</Badge>
                         </div>
                     </div>
                 </div>
-                <Link href="/support">
-                    <Button variant="outline" size="icon" className="absolute top-20 right-4">
-                        <Edit className="h-4 w-4" />
-                    </Button>
-                </Link>
+                <div className="absolute top-20 right-4">
+                    <EditProfileDialog profile={profile} />
+                </div>
             </CardHeader>
             <CardContent>
                 <Separator className="my-6" />
@@ -101,9 +125,9 @@ export default function ProfilePage() {
                     <CardTitle>Acciones Rápidas</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-3">
-                    <Link href="/support"><Button variant="outline" className="justify-start text-base"><Edit className="mr-2"/> Editar Perfil Público</Button></Link>
+                    <EditProfileDialog profile={profile} />
                     <Link href="/support"><Button variant="outline" className="justify-start text-base"><ShieldCheck className="mr-2"/> Seguridad de la Cuenta</Button></Link>
-                    <Link href="/"><Button variant="destructive" className="justify-start text-base mt-6"><LogOut className="mr-2"/> Cerrar Sesión</Button></Link>
+                    <Button variant="destructive" className="justify-start text-base mt-6" onClick={handleSignOut}><LogOut className="mr-2"/> Cerrar Sesión</Button>
                 </CardContent>
             </Card>
         </div>

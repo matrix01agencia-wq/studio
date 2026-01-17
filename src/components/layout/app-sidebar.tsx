@@ -22,9 +22,11 @@ import {
   Settings,
   CalendarDays,
   Wallet,
+  LogIn
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useUser } from '@/firebase/auth/use-user';
 
 const navItems = [
   { href: '/', icon: LayoutDashboard, label: 'Inicio', tooltip: 'Nexus' },
@@ -57,6 +59,7 @@ const AmatrixLogo = () => (
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { user, profile } = useUser();
 
   return (
     <Sidebar>
@@ -91,26 +94,43 @@ export function AppSidebar() {
       </SidebarMenu>
 
       <SidebarFooter className="p-2">
-         <SidebarMenuItem>
-            <Link href="/profile" passHref>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname.startsWith('/profile')}
-                tooltip={{ children: 'Identity', className:"bg-accent text-accent-foreground border-accent" }}
-              >
-                <div className='flex items-center gap-2'>
-                    <Avatar className="h-7 w-7">
-                        <AvatarImage src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdmF0YXJ8ZW58MHx8fHwxNzE3MjE0MjU3fDA&ixlib=rb-4.1.0&q=80&w=1080" data-ai-hint="person avatar" alt="User" />
-                        <AvatarFallback>U</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col text-left group-data-[collapsible=icon]:hidden">
-                        <span className="text-sm font-semibold text-foreground">Usuario</span>
-                        <span className="text-xs text-muted-foreground">Cliente</span>
+         {user && profile ? (
+            <SidebarMenuItem>
+                <Link href="/profile" passHref>
+                <SidebarMenuButton
+                    asChild
+                    isActive={pathname.startsWith('/profile')}
+                    tooltip={{ children: 'Mi Perfil', className:"bg-accent text-accent-foreground border-accent" }}
+                >
+                    <div className='flex items-center gap-2'>
+                        <Avatar className="h-7 w-7">
+                            <AvatarImage src={profile.avatarUrl} data-ai-hint="person avatar" alt={profile.name || "User"} />
+                            <AvatarFallback>{profile.name?.charAt(0).toUpperCase()}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-col text-left group-data-[collapsible=icon]:hidden">
+                            <span className="text-sm font-semibold text-foreground">{profile.name}</span>
+                            <span className="text-xs text-muted-foreground capitalize">{profile.role}</span>
+                        </div>
                     </div>
-                </div>
-              </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
+                </SidebarMenuButton>
+                </Link>
+            </SidebarMenuItem>
+         ) : (
+            <SidebarMenuItem>
+                <Link href="/login" passHref>
+                    <SidebarMenuButton
+                        asChild
+                        isActive={pathname.startsWith('/login')}
+                        tooltip={{ children: 'Iniciar Sesión', className:"bg-accent text-accent-foreground border-accent" }}
+                    >
+                        <div>
+                            <LogIn />
+                            <span>Iniciar Sesión</span>
+                        </div>
+                    </SidebarMenuButton>
+                </Link>
+            </SidebarMenuItem>
+         )}
       </SidebarFooter>
     </Sidebar>
   );

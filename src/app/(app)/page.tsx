@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import {
   Card,
@@ -6,13 +7,19 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Star, Zap, ShieldCheck, HeartHandshake, User, Briefcase, LogIn } from 'lucide-react';
 import { IntelligentSearch } from '@/components/features/intelligent-search';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
+import { useUser } from '@/firebase/auth/use-user';
+import { useCollection } from '@/firebase/firestore/use-collection';
+import { collection, query, where, limit } from 'firebase/firestore';
+import { useFirestore } from '@/firebase/provider';
+import { useMemo } from 'react';
+import { UserProfile } from '@/lib/types';
+
 
 const featuredServices = [
   {
@@ -53,47 +60,22 @@ const featuredServices = [
   },
 ];
 
-const topProfessionals = [
-  {
-    name: 'Neo Anderson',
-    specialty: 'Arquitecto de Realidades Digitales',
-    rating: 5,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-1'),
-  },
-  {
-    name: 'Trinity',
-    specialty: 'Guardián de Ciberseguridad',
-    rating: 5,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-2'),
-  },
-  {
-    name: 'Morpheus',
-    specialty: 'Mentor de Potencial Humano',
-    rating: 4.9,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-3'),
-  },
-   {
-    name: 'Oráculo',
-    specialty: 'Estratega de Negocios Predictiva',
-    rating: 5,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-4'),
-  },
-  {
-    name: 'Seraph',
-    specialty: 'Protector de Activos Digitales',
-    rating: 4.9,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-5'),
-  },
-   {
-    name: 'Niobe',
-    specialty: 'Líder de Operaciones Logísticas',
-    rating: 4.8,
-    avatar: PlaceHolderImages.find((img) => img.id === 'avatar-6'),
-  },
-];
 
 export default function Home() {
+  const { user } = useUser();
+  const firestore = useFirestore();
   const heroImage = PlaceHolderImages.find((img) => img.id === 'nexus-hero');
+
+  const topProfessionalsQuery = useMemo(() => {
+    if (!firestore) return null;
+    return query(
+        collection(firestore, 'users'), 
+        where('role', '==', 'professional'), 
+        limit(6)
+    );
+  }, [firestore]);
+
+  const { data: topProfessionals, isLoading } = useCollection<UserProfile>(topProfessionalsQuery);
 
   return (
     <main className="flex-1 overflow-auto">
@@ -118,25 +100,29 @@ export default function Home() {
             Accede a una red exclusiva de profesionales verificados y lleva tus proyectos al siguiente nivel. Rápido, seguro y eficiente.
           </p>
           <IntelligentSearch />
-           <div className="mt-4 flex flex-col sm:flex-row gap-4">
-            <Link href="/register/client" passHref>
-              <Button size="lg" variant="default" className="text-lg px-8 py-6 w-full sm:w-auto">
-                <User className="mr-2" /> Registrarme como Cliente
-              </Button>
-            </Link>
-            <Link href="/register/professional" passHref>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
-                <Briefcase className="mr-2" /> Registrarme como Profesional
-              </Button>
-            </Link>
-          </div>
-           <div className="mt-6">
-              <Link href="/login">
-                <Button variant="ghost" className="text-lg text-white/80 hover:text-white hover:bg-white/10">
-                    <LogIn className="mr-2" /> ¿Ya tienes una cuenta? Inicia Sesión
-                </Button>
-              </Link>
-            </div>
+           {!user && (
+            <>
+              <div className="mt-4 flex flex-col sm:flex-row gap-4">
+                <Link href="/register/client" passHref>
+                  <Button size="lg" variant="default" className="text-lg px-8 py-6 w-full sm:w-auto">
+                    <User className="mr-2" /> Registrarme como Cliente
+                  </Button>
+                </Link>
+                <Link href="/register/professional" passHref>
+                  <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground">
+                    <Briefcase className="mr-2" /> Registrarme como Profesional
+                  </Button>
+                </Link>
+              </div>
+              <div className="mt-6">
+                  <Link href="/login">
+                    <Button variant="ghost" className="text-lg text-white/80 hover:text-white hover:bg-white/10">
+                        <LogIn className="mr-2" /> ¿Ya tienes una cuenta? Inicia Sesión
+                    </Button>
+                  </Link>
+              </div>
+            </>
+           )}
         </div>
       </div>
 
@@ -210,25 +196,23 @@ export default function Home() {
         <section>
           <h2 className="text-3xl font-bold mb-8 text-center text-primary">Conoce a la Fuerza de Élite</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {topProfessionals.map((prof) => (
-              <Card key={prof.name} className="bg-card border-border hover:border-primary/50 transition-colors duration-300 overflow-hidden group">
+            {topProfessionals?.map((prof) => (
+              <Card key={prof.id} className="bg-card border-border hover:border-primary/50 transition-colors duration-300 overflow-hidden group">
                 <CardContent className="p-6 flex flex-col items-center text-center">
-                  {prof.avatar && (
-                    <Avatar className="h-24 w-24 border-4 border-accent mb-4">
-                      <AvatarImage src={prof.avatar.imageUrl} alt={prof.name} data-ai-hint={prof.avatar.imageHint} />
-                      <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                  )}
+                  <Avatar className="h-24 w-24 border-4 border-accent mb-4">
+                    <AvatarImage src={prof.avatarUrl} alt={prof.name} data-ai-hint="person avatar" />
+                    <AvatarFallback>{prof.name?.charAt(0)}</AvatarFallback>
+                  </Avatar>
                   <div className="space-y-1">
                     <CardTitle className="text-lg">{prof.name}</CardTitle>
-                    <p className="text-sm text-primary font-medium">{prof.specialty}</p>
+                    <p className="text-sm text-primary font-medium">{prof.professionalDetails?.specialty}</p>
                     <div className="flex items-center justify-center gap-1 pt-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-bold">{prof.rating}</span>
+                      <span className="text-sm font-bold">{prof.professionalDetails?.rating || 5}</span>
                       <span className="text-xs text-muted-foreground ml-1">(+500 servicios)</span>
                     </div>
                   </div>
-                   <Link href="/profile" passHref className="w-full">
+                   <Link href={`/professionals/${prof.id}`} passHref className="w-full">
                       <Button variant="ghost" className="mt-4 w-full text-primary hover:text-primary">
                         Ver Perfil <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
                       </Button>
