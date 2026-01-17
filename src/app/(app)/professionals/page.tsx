@@ -88,10 +88,12 @@ export default function ProfessionalsPage() {
                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground"/>
                  <Input placeholder="Buscar por especialidad, nombre o habilidad..." className="pl-10 h-12 text-lg"/>
             </div>
-            <Button size="lg" className="w-full md:w-auto h-12 text-lg">
-                <SlidersHorizontal className="mr-2 h-5 w-5" />
-                Filtros Avanzados
-            </Button>
+            <Link href="/support">
+                <Button size="lg" className="w-full md:w-auto h-12 text-lg">
+                    <SlidersHorizontal className="mr-2 h-5 w-5" />
+                    Filtros Avanzados
+                </Button>
+            </Link>
         </div>
       </Card>
       

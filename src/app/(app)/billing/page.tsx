@@ -36,10 +36,12 @@ export default function BillingPage() {
                                 <CardTitle className="text-2xl">Historial de Transacciones</CardTitle>
                                 <CardDescription>Cada movimiento, registrado con precisión milimétrica.</CardDescription>
                             </div>
-                            <Button>
-                                <Download className="mr-2" />
-                                Exportar Reporte
-                            </Button>
+                            <Link href="/support">
+                                <Button>
+                                    <Download className="mr-2" />
+                                    Exportar Reporte
+                                </Button>
+                            </Link>
                         </CardHeader>
                         <CardContent>
                             <Table>
@@ -83,10 +85,12 @@ export default function BillingPage() {
                             <CardDescription>Fondos disponibles para tus próximos proyectos.</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <Button size="lg" className="w-full">
-                                <Plus className="mr-2" />
-                                Añadir Fondos
-                            </Button>
+                            <Link href="/support" className="w-full">
+                                <Button size="lg" className="w-full">
+                                    <Plus className="mr-2" />
+                                    Añadir Fondos
+                                </Button>
+                            </Link>
                         </CardContent>
                     </Card>
 
@@ -104,12 +108,16 @@ export default function BillingPage() {
                                         <p className="text-sm text-muted-foreground">Expira 12/2026</p>
                                     </div>
                                 </div>
-                                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive"><Trash2 className="w-4 h-4" /></Button>
+                                <Link href="/support">
+                                    <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive"><Trash2 className="w-4 h-4" /></Button>
+                                </Link>
                             </div>
-                            <Button variant="outline" className="w-full mt-2">
-                                <Plus className="mr-2" />
-                                Añadir Nuevo Método
-                            </Button>
+                            <Link href="/support" className="w-full">
+                                <Button variant="outline" className="w-full mt-2">
+                                    <Plus className="mr-2" />
+                                    Añadir Nuevo Método
+                                </Button>
+                            </Link>
                         </CardContent>
                     </Card>
                 </div>
@@ -157,7 +165,9 @@ export default function BillingPage() {
                                         </TableCell>
                                         <TableCell>{inv.date}</TableCell>
                                         <TableCell className="text-right">
-                                            <Button variant="outline" size="sm"><Download className="mr-2 h-4 w-4"/> PDF</Button>
+                                            <Link href="/support">
+                                                <Button variant="outline" size="sm"><Download className="mr-2 h-4 w-4"/> PDF</Button>
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 ))}
