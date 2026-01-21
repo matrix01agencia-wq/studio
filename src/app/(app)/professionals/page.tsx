@@ -12,6 +12,7 @@ import { collection, query, where } from "firebase/firestore";
 import { useFirestore } from "@/firebase/provider";
 import { useMemo } from "react";
 import { UserProfile } from "@/lib/types";
+export const dynamic = 'force-dynamic';
 
 export default function ProfessionalsPage() {
   const firestore = useFirestore();
