@@ -1,4 +1,6 @@
 'use client';
+export const dynamic = 'force-dynamic'
+
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,8 +13,7 @@ import { useCollection } from "@/firebase/firestore/use-collection";
 import { collection, query, where } from "firebase/firestore";
 import { useFirestore } from "@/firebase/provider";
 import { useMemo } from "react";
-import { UserProfile } from "@/lib/types";
-export const dynamic = 'force-dynamic';
+import { UserProfile } from "@/lib/types";;
 
 export default function ProfessionalsPage() {
   const firestore = useFirestore();
