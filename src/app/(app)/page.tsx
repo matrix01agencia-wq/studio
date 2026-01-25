@@ -35,3 +35,13 @@ export default function AppRootPage() {
     </div>
   );
 }
+
+export default function Page() {
+    return (
+        <main>
+              <h1>Funciona</h1>
+                  </main>
+                    );
+                    }
+                    
+}
