@@ -27,6 +27,10 @@ import {
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useUser } from '@/firebase/auth/use-user';
+import { Button } from '../ui/button';
+import { signOutUser } from '@/firebase/auth/actions';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const navItems = [
   { href: '/', icon: LayoutDashboard, label: 'Inicio', tooltip: 'Nexus' },
@@ -59,7 +63,26 @@ const AmatrixLogo = () => (
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast } = useToast();
   const { user, profile } = useUser();
+
+  const handleSignOut = async () => {
+    try {
+        await signOutUser();
+        toast({
+            title: "Sesión cerrada",
+            description: "Has cerrado sesión correctamente."
+        });
+        router.push('/login');
+    } catch (error) {
+        toast({
+            variant: "destructive",
+            title: "Error",
+            description: "No se pudo cerrar la sesión. Inténtalo de nuevo."
+        });
+    }
+  }
 
   return (
     <Sidebar>
@@ -129,6 +152,14 @@ export function AppSidebar() {
                         </div>
                     </SidebarMenuButton>
                 </Link>
+            </SidebarMenuItem>
+         )}
+         {user && (
+            <SidebarMenuItem>
+                <Button variant="ghost" className="w-full justify-start" onClick={handleSignOut}>
+                    <LogIn className="mr-2 rotate-180"/>
+                    <span className="group-data-[collapsible=icon]:hidden">Cerrar Sesión</span>
+                </Button>
             </SidebarMenuItem>
          )}
       </SidebarFooter>

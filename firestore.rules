@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check ownership
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // Users can be read by anyone, but only written by the owner.
+    match /users/{userId} {
+      allow read: if true;
+      allow create, update, delete: if isOwner(userId);
+    }
+
+    // Services can be read by anyone, but only created/updated by the professional offering them.
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.professionalId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.professionalId == request.auth.uid;
+    }
+
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
