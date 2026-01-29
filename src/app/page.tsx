@@ -1,166 +1,223 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowRight, Star } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Badge } from '@/components/ui/badge';
+import { ArrowRight, Zap, Shield, Rocket } from 'lucide-react';
 import { IntelligentSearch } from '@/components/features/intelligent-search';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-
-const serviceCategories = [
-    { name: 'Digital', imageId: 'service-digital', description: 'Soluciones tecnológicas y desarrollo a medida.' },
-    { name: 'Bienestar', imageId: 'service-wellness', description: 'Entrenadores, nutricionistas y terapeutas.' },
-    { name: 'Entretenimiento', imageId: 'service-entertainment', description: 'DJs, músicos y organizadores de eventos.' },
-    { name: 'Hogar', imageId: 'service-home', description: 'Diseño de interiores y automatización del hogar.' },
-    { name: 'Legal & Finanzas', imageId: 'service-legal', description: 'Asesoría experta para proteger tu futuro.' },
-    { name: 'Creativo', imageId: 'service-creative', description: 'Diseño, branding y producción de contenido.' },
+const features = [
+  {
+    icon: Zap,
+    title: 'Conexión Instantánea',
+    description: 'Encuentra y contrata profesionales de élite en segundos. Nuestro algoritmo te conecta con el talento perfecto para tus necesidades.',
+  },
+  {
+    icon: Shield,
+    title: 'Seguridad Amatrix',
+    description: 'Todas las transacciones y comunicaciones están encriptadas. Tu seguridad y la de tus proyectos es nuestra máxima prioridad.',
+  },
+  {
+    icon: Rocket,
+    title: 'Resultados Exponenciales',
+    description: 'Colabora con expertos verificados y lleva tus proyectos al siguiente nivel. La excelencia es nuestro estándar.',
+  },
 ];
 
-const featuredProfessionals = [
-    { name: 'Elena Petrova', specialty: 'Desarrollo de IA', rating: 5, reviews: 120, avatarId: 'avatar-2' },
-    { name: 'Kenji Tanaka', specialty: 'Ciberseguridad', rating: 5, reviews: 98, avatarId: 'avatar-3' },
-    { name: 'Aisha Khan', specialty: 'Entrenadora Personal', rating: 5, reviews: 215, avatarId: 'avatar-4' },
-    { name: 'Carlos Gomez', specialty: 'Chef de Alta Cocina', rating: 5, reviews: 150, avatarId: 'avatar-5' },
+const services = [
+  { id: 'digital', name: 'Soluciones Digitales', imageHint: 'code screen', imageId: 'service-digital' },
+  { id: 'wellness', name: 'Bienestar y Salud', imageHint: 'yoga meditation', imageId: 'service-wellness' },
+  { id: 'entertainment', name: 'Entretenimiento', imageHint: 'dj concert', imageId: 'service-entertainment' },
+  { id: 'home', name: 'Hogar y Oficios', imageHint: 'modern home', imageId: 'service-home' },
+  { id: 'legal', name: 'Asesoría Legal', imageHint: 'legal documents', imageId: 'service-legal' },
+  { id: 'creative', name: 'Creatividad y Diseño', imageHint: 'creative workspace', imageId: 'service-creative' },
+];
+
+const professionals = [
+  { id: 1, name: 'Elena Roldán', specialty: 'Desarrolladora Full-Stack', avatarId: 'avatar-2' },
+  { id: 2, name: 'Carlos Mendoza', specialty: 'Entrenador Personal', avatarId: 'avatar-3' },
+  { id: 3, name: 'Sofía Navarro', specialty: 'Chef Privada', avatarId: 'avatar-4' },
+  { id: 4, name: 'Ricardo Vargas', specialty: 'Abogado Corporativo', avatarId: 'avatar-5' },
+  { id: 5, name: 'Lucía Ferrer', specialty: 'Diseñadora UX/UI', avatarId: 'avatar-6' },
+  { id: 6, name: 'Javier Acosta', specialty: 'Consultor Financiero', avatarId: 'avatar-1' },
 ];
 
 const getImage = (id: string) => {
-    return PlaceHolderImages.find(img => img.id === id) || PlaceHolderImages[0];
-};
+    return PlaceHolderImages.find(img => img.id === id);
+}
 
-export default function Home() {
+export default function Page() {
   const heroImage = getImage('nexus-hero');
-  
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-[100dvh] bg-background">
+      <header className="px-4 lg:px-6 h-14 flex items-center bg-background/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-border">
+        <Link href="#" className="flex items-center justify-center" prefetch={false}>
+            <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center mr-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 7L12 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 22V12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 7L12 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M17 4.5L7 9.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </div>
+            <span className="text-xl font-bold text-primary tracking-wider">AMATRIX</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link href="/login" className="text-sm font-medium hover:text-primary transition-colors" prefetch={false}>
+            Iniciar Sesión
+          </Link>
+          <Button asChild>
+            <Link href="/register">Registrarse</Link>
+          </Button>
+        </nav>
+      </header>
       <main className="flex-1">
-        <section className="relative h-[60vh] md:h-[80vh] flex items-center justify-center text-center text-white">
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            className="object-cover -z-10 brightness-50"
-            priority
-            data-ai-hint={heroImage.imageHint}
-          />
-          <div className="container px-4 md:px-6 z-10">
-            <div className="max-w-3xl mx-auto space-y-4">
-              <Badge variant="secondary" className="text-base py-2 px-4 rounded-full bg-primary/20 border-primary/50 text-primary">
-                Plataforma Exclusiva de Servicios de Élite
+        <section className="w-full pt-24 md:pt-32 lg:pt-40 relative">
+          <div className="absolute inset-0 h-full w-full bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
+          <div className="absolute inset-0 -z-10 h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          {heroImage && 
+            <div className="absolute inset-0 -z-20 h-full w-full opacity-10">
+                <Image
+                    src={heroImage.imageUrl}
+                    alt="Nexus"
+                    fill
+                    className="object-cover"
+                    data-ai-hint={heroImage.imageHint}
+                />
+            </div>
+          }
+          <div className="container px-4 md:px-6 text-center relative">
+            <div className="flex flex-col items-center space-y-4">
+              <Badge variant="outline" className="py-1 px-3 rounded-full text-primary border-primary">
+                Servicios de Élite
               </Badge>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-shadow-lg">
-                Bienvenido a AMATRIX
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+                Conecta con la <span className="text-primary">Excelencia</span>.
               </h1>
-              <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto">
-                Conectamos a clientes exigentes con profesionales de primer nivel. Encuentra soluciones a medida para tus necesidades más específicas.
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Amatrix es la plataforma exclusiva donde encuentras a los mejores profesionales para tus proyectos más ambiciosos.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button asChild size="lg" className="text-lg">
-                  <Link href="/register">Conviértete en Cliente</Link>
-                </Button>
-                <Button asChild size="lg" variant="secondary" className="text-lg">
-                  <Link href="/register">Únete como Profesional</Link>
-                </Button>
+              <div className="w-full max-w-2xl py-8">
+                <IntelligentSearch />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-12 md:py-20 lg:py-24 bg-background">
-            <div className="container px-4 md:px-6">
-                <div className="text-center space-y-3 mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold">Encuentra el Servicio Perfecto</h2>
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                        Utiliza nuestra búsqueda inteligente para describir lo que necesitas y deja que nuestra IA te conecte con el experto ideal.
-                    </p>
-                </div>
-                <IntelligentSearch />
-            </div>
-        </section>
-
-
-        <section id="services" className="py-12 md:py-20 lg:py-24 bg-secondary/20">
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
           <div className="container px-4 md:px-6">
-            <div className="text-center space-y-3 mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold">Categorías de Servicios</h2>
-              <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                Explora un universo de posibilidades. Profesionales rigurosamente seleccionados en cada campo.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {serviceCategories.map((category) => {
-                const image = getImage(category.imageId);
-                return (
-                    <Card key={category.name} className="overflow-hidden group hover:shadow-primary/20 hover:shadow-lg transition-all duration-300">
-                        <CardHeader className="p-0">
-                        <div className="relative h-48">
-                            <Image
-                                src={image.imageUrl}
-                                alt={image.description}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                data-ai-hint={image.imageHint}
-                            />
-                        </div>
-                        </CardHeader>
-                        <CardContent className="p-6">
-                        <CardTitle className="text-2xl mb-2">{category.name}</CardTitle>
-                        <CardDescription>{category.description}</CardDescription>
-                        <Button variant="link" className="p-0 mt-4 text-primary">
-                            Explorar <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                        </CardContent>
-                    </Card>
-                )
-              })}
+            <div className="grid gap-6 items-center">
+              <div className="flex flex-col justify-center space-y-4 text-center">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">El Ecosistema Perfecto para tus Proyectos</h2>
+                  <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
+                    Nuestra plataforma está diseñada para la máxima eficiencia y seguridad.
+                  </p>
+                </div>
+              </div>
+              <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
+                {features.map((feature, index) => (
+                  <div key={index} className="grid gap-1 p-4 rounded-lg hover:bg-accent transition-all">
+                    <div className="flex items-center gap-2">
+                        <feature.icon className="h-8 w-8 text-primary" />
+                        <h3 className="text-lg font-bold">{feature.title}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="professionals" className="py-12 md:py-20 lg:py-24 bg-background">
-          <div className="container px-4 md:px-6">
-            <div className="text-center space-y-3 mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold">Profesionales Destacados</h2>
-              <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                La élite de la industria. Verificados, experimentados y listos para superar tus expectativas.
+        <section id="services" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sm:text-5xl">Un Universo de Posibilidades</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                {services.map((service) => {
+                    const image = getImage(service.imageId);
+                    return (
+                        <Link key={service.id} href="#" className="group relative overflow-hidden rounded-lg" prefetch={false}>
+                            {image && 
+                                <Image
+                                    src={image.imageUrl}
+                                    alt={service.name}
+                                    width={400}
+                                    height={500}
+                                    className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                                    data-ai-hint={image.imageHint}
+                                />
+                            }
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-4">
+                                <h3 className="text-lg font-semibold text-white">{service.name}</h3>
+                            </div>
+                        </Link>
+                    )
+                })}
+            </div>
+          </div>
+        </section>
+        
+        <section id="professionals" className="w-full py-12 md:py-24 lg:py-32 bg-card/50">
+          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Conoce a la Élite</h2>
+              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Nuestros profesionales son rigurosamente seleccionados para garantizar la máxima calidad y expertise.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-              {featuredProfessionals.map((prof) => {
+            <div className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-8">
+              {professionals.map((prof) => {
                 const avatar = getImage(prof.avatarId);
                 return (
-                <Card key={prof.name} className="text-center flex flex-col items-center p-6">
-                    <Avatar className="w-24 h-24 mb-4 border-4 border-primary/50">
-                        <AvatarImage src={avatar.imageUrl} data-ai-hint={avatar.imageHint} alt={prof.name} />
-                        <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <CardTitle className="text-xl">{prof.name}</CardTitle>
-                    <p className="text-primary font-medium">{prof.specialty}</p>
-                    <div className="flex items-center gap-1 mt-2">
-                        <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                        <span className="font-bold">{prof.rating.toFixed(1)}</span>
-                        <span className="text-muted-foreground">({prof.reviews} reseñas)</span>
+                    <div key={prof.id} className="flex flex-col items-center gap-2">
+                        {avatar && 
+                            <Avatar className="w-24 h-24 border-2 border-primary">
+                                <AvatarImage src={avatar.imageUrl} alt={prof.name} data-ai-hint={avatar.imageHint} />
+                                <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                        }
+                        <div className="text-center">
+                            <p className="text-sm font-medium leading-none">{prof.name}</p>
+                            <p className="text-xs text-muted-foreground">{prof.specialty}</p>
+                        </div>
                     </div>
-                </Card>
-              )})}
+                );
+              })}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-card text-card-foreground border-t">
-        <div className="container py-8 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Agencia Amatrix. Todos los derechos reservados.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link href="#" className="text-sm hover:text-primary">Términos de Servicio</Link>
-            <Link href="#" className="text-sm hover:text-primary">Política de Privacidad</Link>
+      <footer className="bg-card border-t border-border mt-auto">
+        <div className="container mx-auto px-4 md:px-6 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center gap-2 mb-4 md:mb-0">
+                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center mr-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M2 7L12 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M12 22V12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M22 7L12 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M17 4.5L7 9.5" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </div>
+                <span className="text-lg font-bold">AMATRIX</span>
+            </div>
+            <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Agencia Amatrix. Todos los derechos reservados.</p>
+            <nav className="flex gap-4 mt-4 md:mt-0">
+              <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+                Términos y Condiciones
+              </Link>
+              <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
+                Política de Privacidad
+              </Link>
+            </nav>
           </div>
         </div>
       </footer>
