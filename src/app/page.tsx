@@ -4,52 +4,49 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Zap, Shield, Rocket } from 'lucide-react';
-import { IntelligentSearch } from '@/components/features/intelligent-search';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-
-const features = [
-  {
-    icon: Zap,
-    title: 'Conexión Instantánea',
-    description: 'Encuentra y contrata profesionales de élite en segundos. Nuestro algoritmo te conecta con el talento perfecto para tus necesidades.',
-  },
-  {
-    icon: Shield,
-    title: 'Seguridad Amatrix',
-    description: 'Todas las transacciones y comunicaciones están encriptadas. Tu seguridad y la de tus proyectos es nuestra máxima prioridad.',
-  },
-  {
-    icon: Rocket,
-    title: 'Resultados Exponenciales',
-    description: 'Colabora con expertos verificados y lleva tus proyectos al siguiente nivel. La excelencia es nuestro estándar.',
-  },
-];
-
-const services = [
-  { id: 'digital', name: 'Soluciones Digitales', imageHint: 'code screen', imageId: 'service-digital' },
-  { id: 'wellness', name: 'Bienestar y Salud', imageHint: 'yoga meditation', imageId: 'service-wellness' },
-  { id: 'entertainment', name: 'Entretenimiento', imageHint: 'dj concert', imageId: 'service-entertainment' },
-  { id: 'home', name: 'Hogar y Oficios', imageHint: 'modern home', imageId: 'service-home' },
-  { id: 'legal', name: 'Asesoría Legal', imageHint: 'legal documents', imageId: 'service-legal' },
-  { id: 'creative', name: 'Creatividad y Diseño', imageHint: 'creative workspace', imageId: 'service-creative' },
-];
-
-const professionals = [
-  { id: 1, name: 'Elena Roldán', specialty: 'Desarrolladora Full-Stack', avatarId: 'avatar-2' },
-  { id: 2, name: 'Carlos Mendoza', specialty: 'Entrenador Personal', avatarId: 'avatar-3' },
-  { id: 3, name: 'Sofía Navarro', specialty: 'Chef Privada', avatarId: 'avatar-4' },
-  { id: 4, name: 'Ricardo Vargas', specialty: 'Abogado Corporativo', avatarId: 'avatar-5' },
-  { id: 5, name: 'Lucía Ferrer', specialty: 'Diseñadora UX/UI', avatarId: 'avatar-6' },
-  { id: 6, name: 'Javier Acosta', specialty: 'Consultor Financiero', avatarId: 'avatar-1' },
-];
-
-const getImage = (id: string) => {
-    return PlaceHolderImages.find(img => img.id === id);
-}
+import { Zap, Shield, Rocket } from 'lucide-react';
 
 export default function Page() {
-  const heroImage = getImage('nexus-hero');
+  const features = [
+    {
+      icon: Zap,
+      title: 'Conexión Instantánea',
+      description: 'Encuentra y contrata profesionales de élite en segundos. Nuestro algoritmo te conecta con el talento perfecto para tus necesidades.',
+    },
+    {
+      icon: Shield,
+      title: 'Seguridad Amatrix',
+      description: 'Todas las transacciones y comunicaciones están encriptadas. Tu seguridad y la de tus proyectos es nuestra máxima prioridad.',
+    },
+    {
+      icon: Rocket,
+      title: 'Resultados Exponenciales',
+      description: 'Colabora con expertos verificados y lleva tus proyectos al siguiente nivel. La excelencia es nuestro estándar.',
+    },
+  ];
+
+  const services = [
+    { id: 'digital', name: 'Soluciones Digitales', imageHint: 'code screen', imageUrl: 'https://picsum.photos/seed/s1/400/500' },
+    { id: 'wellness', name: 'Bienestar y Salud', imageHint: 'yoga meditation', imageUrl: 'https://picsum.photos/seed/s2/400/500' },
+    { id: 'entertainment', name: 'Entretenimiento', imageHint: 'dj concert', imageUrl: 'https://picsum.photos/seed/s3/400/500' },
+    { id: 'home', name: 'Hogar y Oficios', imageHint: 'modern home', imageUrl: 'https://picsum.photos/seed/s4/400/500' },
+    { id: 'legal', name: 'Asesoría Legal', imageHint: 'legal documents', imageUrl: 'https://picsum.photos/seed/s5/400/500' },
+    { id: 'creative', name: 'Creatividad y Diseño', imageHint: 'creative workspace', imageUrl: 'https://picsum.photos/seed/s6/400/500' },
+  ];
+
+  const professionals = [
+    { id: 1, name: 'Elena Roldán', specialty: 'Desarrolladora Full-Stack', imageUrl: 'https://picsum.photos/seed/p1/200/200', imageHint: 'person portrait' },
+    { id: 2, name: 'Carlos Mendoza', specialty: 'Entrenador Personal', imageUrl: 'https://picsum.photos/seed/p2/200/200', imageHint: 'man profile' },
+    { id: 3, name: 'Sofía Navarro', specialty: 'Chef Privada', imageUrl: 'https://picsum.photos/seed/p3/200/200', imageHint: 'woman portrait' },
+    { id: 4, name: 'Ricardo Vargas', specialty: 'Abogado Corporativo', imageUrl: 'https://picsum.photos/seed/p4/200/200', imageHint: 'man smiling' },
+    { id: 5, name: 'Lucía Ferrer', specialty: 'Diseñadora UX/UI', imageUrl: 'https://picsum.photos/seed/p5/200/200', imageHint: 'woman profile' },
+    { id: 6, name: 'Javier Acosta', specialty: 'Consultor Financiero', imageUrl: 'https://picsum.photos/seed/p6/200/200', imageHint: 'person portrait' },
+  ];
+  
+  const heroImage = {
+      imageUrl: "https://picsum.photos/seed/nexus-hero/1920/1080",
+      imageHint: "futuristic city"
+  };
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background">
@@ -79,17 +76,15 @@ export default function Page() {
         <section className="w-full pt-24 md:pt-32 lg:pt-40 relative">
           <div className="absolute inset-0 h-full w-full bg-background bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
           <div className="absolute inset-0 -z-10 h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-          {heroImage && 
-            <div className="absolute inset-0 -z-20 h-full w-full opacity-10">
-                <Image
-                    src={heroImage.imageUrl}
-                    alt="Nexus"
-                    fill
-                    className="object-cover"
-                    data-ai-hint={heroImage.imageHint}
-                />
-            </div>
-          }
+          <div className="absolute inset-0 -z-20 h-full w-full opacity-10">
+              <Image
+                  src={heroImage.imageUrl}
+                  alt="Nexus"
+                  fill
+                  className="object-cover"
+                  data-ai-hint={heroImage.imageHint}
+              />
+          </div>
           <div className="container px-4 md:px-6 text-center relative">
             <div className="flex flex-col items-center space-y-4">
               <Badge variant="outline" className="py-1 px-3 rounded-full text-primary border-primary">
@@ -102,7 +97,9 @@ export default function Page() {
                 Amatrix es la plataforma exclusiva donde encuentras a los mejores profesionales para tus proyectos más ambiciosos.
               </p>
               <div className="w-full max-w-2xl py-8">
-                <IntelligentSearch />
+                 <div className="text-center p-4 bg-card rounded-lg border border-border">
+                    <p className="text-muted-foreground">Buscador inteligente de servicios.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -138,27 +135,22 @@ export default function Page() {
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter text-center mb-12 sm:text-5xl">Un Universo de Posibilidades</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-                {services.map((service) => {
-                    const image = getImage(service.imageId);
-                    return (
-                        <Link key={service.id} href="#" className="group relative overflow-hidden rounded-lg" prefetch={false}>
-                            {image && 
-                                <Image
-                                    src={image.imageUrl}
-                                    alt={service.name}
-                                    width={400}
-                                    height={500}
-                                    className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-                                    data-ai-hint={image.imageHint}
-                                />
-                            }
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                            <div className="absolute bottom-0 left-0 right-0 p-4">
-                                <h3 className="text-lg font-semibold text-white">{service.name}</h3>
-                            </div>
-                        </Link>
-                    )
-                })}
+                {services.map((service) => (
+                    <Link key={service.id} href="#" className="group relative overflow-hidden rounded-lg" prefetch={false}>
+                        <Image
+                            src={service.imageUrl}
+                            alt={service.name}
+                            width={400}
+                            height={500}
+                            className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                            data-ai-hint={service.imageHint}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                            <h3 className="text-lg font-semibold text-white">{service.name}</h3>
+                        </div>
+                    </Link>
+                ))}
             </div>
           </div>
         </section>
@@ -172,23 +164,18 @@ export default function Page() {
               </p>
             </div>
             <div className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-8">
-              {professionals.map((prof) => {
-                const avatar = getImage(prof.avatarId);
-                return (
-                    <div key={prof.id} className="flex flex-col items-center gap-2">
-                        {avatar && 
-                            <Avatar className="w-24 h-24 border-2 border-primary">
-                                <AvatarImage src={avatar.imageUrl} alt={prof.name} data-ai-hint={avatar.imageHint} />
-                                <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
-                            </Avatar>
-                        }
-                        <div className="text-center">
-                            <p className="text-sm font-medium leading-none">{prof.name}</p>
-                            <p className="text-xs text-muted-foreground">{prof.specialty}</p>
-                        </div>
+              {professionals.map((prof) => (
+                <div key={prof.id} className="flex flex-col items-center gap-2">
+                    <Avatar className="w-24 h-24 border-2 border-primary">
+                        <AvatarImage src={prof.imageUrl} alt={prof.name} data-ai-hint={prof.imageHint} />
+                        <AvatarFallback>{prof.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div className="text-center">
+                        <p className="text-sm font-medium leading-none">{prof.name}</p>
+                        <p className="text-xs text-muted-foreground">{prof.specialty}</p>
                     </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -209,7 +196,7 @@ export default function Page() {
                 </div>
                 <span className="text-lg font-bold">AMATRIX</span>
             </div>
-            <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Agencia Amatrix. Todos los derechos reservados.</p>
+            <p className="text-sm text-muted-foreground">&copy; 2024 Agencia Amatrix. Todos los derechos reservados.</p>
             <nav className="flex gap-4 mt-4 md:mt-0">
               <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
                 Términos y Condiciones
