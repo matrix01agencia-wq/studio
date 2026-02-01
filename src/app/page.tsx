@@ -186,7 +186,8 @@ export default function Page() {
       <footer className="bg-card border-t border-border mt-auto">
         <div className="container mx-auto px-4 md:px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center gap-2           <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center mr-2">
+            <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center mr-2">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M2 7L12 12" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -197,7 +198,7 @@ export default function Page() {
                 </div>
                 <span className="text-lg font-bold">AMATRIX</span>
             </div>
-            <p className="text-sm text-muted-foreground">&copy; 2024 Agencia Amatrix. Todos los derechos reservados.</p>
+            <p className="text-sm text-muted-foreground mt-4 md:mt-0">&copy; 2024 Agencia Amatrix. Todos los derechos reservados.</p>
             <nav className="flex gap-4 mt-4 md:mt-0">
               <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
                 Términos y Condiciones
