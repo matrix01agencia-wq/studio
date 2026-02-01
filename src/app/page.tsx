@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Zap, Shield, Rocket } from 'lucide-react';
+import { IntelligentSearch } from '@/components/features/intelligent-search';
 
 export default function Page() {
   const features = [
@@ -99,9 +100,7 @@ export default function Page() {
                 Amatrix es la plataforma exclusiva donde encuentras a los mejores profesionales para tus proyectos más ambiciosos.
               </p>
               <div className="w-full max-w-2xl py-8">
-                 <div className="text-center p-4 bg-card rounded-lg border border-border">
-                    <p className="text-muted-foreground">Buscador inteligente de servicios.</p>
-                </div>
+                 <IntelligentSearch />
               </div>
             </div>
           </div>
