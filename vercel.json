@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "agency-amatrix-",
+  "framework": "nextjs",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
+
